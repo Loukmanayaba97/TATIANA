@@ -1,0 +1,94 @@
+/* Note de presse en page « journal » */
+.paper-page{--paper:#faf7f1;--ink:#111;--mut:#5d5a54;--rule:#d9d3c7;background:var(--paper);color:var(--ink);counter-reset:fig}
+#rp{position:fixed;top:0;left:0;height:3px;width:0;background:var(--ink);z-index:50}
+.paper-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;max-width:1180px;margin:0 auto;padding:16px 24px}
+.paper-bar .back{font-weight:700;font-size:14px;text-decoration:none;color:var(--ink)}
+.paper-bar .pdf{margin-left:auto;padding:8px 14px;border:1px solid var(--ink);border-radius:30px;background:none;font:700 12.5px 'Manrope',sans-serif;cursor:pointer}
+.paper-bar .pdf:hover{background:var(--ink);color:#fff}
+.paper-bar .logo img{height:44px;width:auto}
+.paper{max-width:1180px;margin:0 auto;padding:0 24px 80px;font-family:'Newsreader',Georgia,serif}
+
+/* une */
+.p-head{text-align:center;padding:14px 0 26px;border-top:4px solid var(--ink);border-bottom:1px solid var(--ink);margin-bottom:34px;position:relative}
+.p-head::after{content:"";position:absolute;left:0;right:0;bottom:4px;border-bottom:1px solid var(--ink)}
+.p-dateline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:8px 0 10px;margin-bottom:22px;border-bottom:1px solid var(--rule);font:700 11.5px 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.paper h1{font:700 clamp(44px,10vw,118px)/.92 'Fraunces',serif;letter-spacing:-.025em;text-transform:uppercase}
+.p-sub{max-width:760px;margin:20px auto 0;font:italic 400 clamp(19px,2.3vw,26px)/1.4 'Newsreader',serif;color:#2b2926}
+.p-by{margin-top:14px;font:600 13px 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.p-by b{color:var(--ink)}
+
+/* typographie */
+.paper h2{font:700 clamp(26px,3.4vw,40px)/1.1 'Fraunces',serif;margin-bottom:12px}
+.paper h2.long{font-size:clamp(22px,2.6vw,32px);max-width:900px;margin:0 auto 26px;text-align:center}
+.paper h3{font:700 clamp(18px,2vw,22px)/1.25 'Fraunces',serif;margin:6px 0 10px}
+.paper h3 small{font:500 15px 'Newsreader',serif;color:var(--mut)}
+.paper p,.paper li{font-size:clamp(17px,1.5vw,19px);line-height:1.7;color:#24221f;text-align:justify;hyphens:auto}
+.paper p{margin-bottom:14px}
+.paper .p-label{font:800 11.5px 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-align:left;color:var(--mut)}
+.p-split>.p-col:first-child>.p-label+p::first-letter{float:left;font:700 4.6em/.8 'Fraunces',serif;padding:6px 10px 0 0}
+.p-sec{padding:30px 0;border-bottom:1px solid var(--rule)}
+.p-split{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:44px;align-items:start}
+.p-cols2{columns:2;column-gap:52px;column-rule:1px solid var(--rule);margin-top:10px}
+.p-cols2 p{break-inside:avoid-column}
+
+/* photos : toujours entières, cadre fin, légende de presse, clic = plein écran */
+.p-fig{margin:0;counter-increment:fig}
+.p-fig img{display:block;width:100%;height:auto;border:1px solid var(--ink);padding:5px;background:#fff;cursor:zoom-in}
+.p-fig figcaption{margin-top:9px;font:italic 400 14.5px/1.55 'Newsreader',serif;color:var(--mut);text-align:left}
+.p-fig figcaption::before{content:"Fig. " counter(fig) " — ";font:800 11px 'Manrope',sans-serif;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.p-fig.wide{max-width:560px;margin:26px auto 0}
+
+/* encadré, citation */
+.p-box{border:2px solid var(--ink);padding:20px 22px 6px;margin-bottom:24px;background:#fff}
+.p-box ul{margin-bottom:12px}
+.paper ul{padding-left:20px;margin:8px 0 14px;display:grid;gap:8px}
+.p-quote-sec blockquote{position:relative;margin:34px auto 0;max-width:840px;padding:34px 0 0;border-top:1px solid var(--ink);border-left:0;font:500 clamp(22px,2.9vw,34px)/1.4 'Fraunces',serif;text-align:center}
+.p-quote-sec blockquote::before{content:"\201C";position:absolute;top:-28px;left:50%;transform:translateX(-50%);padding:0 14px;background:var(--paper);font:700 78px/1 'Fraunces',serif}
+.p-quote-sec cite{display:block;margin-top:16px;font:italic 400 15px/1.6 'Newsreader',serif;color:var(--mut)}
+.p-concl{max-width:860px;margin:0 auto}
+.p-sign{display:grid;grid-template-columns:200px 1fr;gap:30px;align-items:center;padding-top:34px;margin-top:6px;border-top:4px solid var(--ink)}
+.p-sign img{width:100%;height:auto;border:1px solid var(--ink);padding:4px;background:#fff}
+.p-sign h2{margin-bottom:6px}
+.paper .p-role{font-weight:600;text-align:left;color:var(--ink)}
+.paper .p-bio{font-size:16px;text-align:left}
+.p-contact{font:700 14px 'Manrope',sans-serif;text-align:left}
+.p-contact a{color:var(--ink)}
+
+/* plein écran */
+#lb{position:fixed;inset:0;z-index:100;background:rgba(10,10,10,.92);display:grid;place-items:center;padding:20px;cursor:zoom-out}
+#lb[hidden]{display:none}
+#lb img{max-width:100%;max-height:100%;object-fit:contain}
+#lb button{position:absolute;top:14px;right:18px;background:none;border:0;color:#fff;font-size:40px;line-height:1;cursor:pointer}
+
+@media(max-width:820px){
+  .p-split{grid-template-columns:1fr;gap:26px}
+  .p-cols2{columns:1}
+  .paper p,.paper li{text-align:left}
+  .p-sign{grid-template-columns:1fr}.p-sign img{max-width:200px}
+  .p-dateline{justify-content:center;text-align:center}
+}
+@media print{
+  .paper-bar .pdf,#rp,#lb{display:none}
+  .paper-page{background:#fff}
+  .p-fig img{cursor:auto}.p-sec,.p-fig,.p-box{break-inside:avoid}
+}
+
+/* dateline : une seule ligne sur ordinateur, centrée sur mobile */
+.p-dateline{flex-wrap:nowrap;letter-spacing:.1em;font-size:11px}
+@media(max-width:820px){.p-dateline{flex-direction:column;align-items:center;gap:4px}}
+
+/* en-tête mobile : barre en deux lignes propres, une alignée au centre */
+@media(max-width:820px){
+  .paper-bar{flex-wrap:wrap;justify-content:space-between;gap:10px 12px;padding:14px 20px 12px}
+  .paper-bar .logo{order:-1;flex:0 0 100%;display:flex;justify-content:center}
+  .paper-bar .logo img{height:36px}
+  .paper-bar .back,.paper-bar .pdf{white-space:nowrap}
+  .paper-bar .back{font-size:13.5px}
+  .paper-bar .pdf{margin-left:0;padding:7px 13px;font-size:12px}
+
+  .p-head{padding:10px 0 20px;margin-bottom:26px}
+  .p-dateline{flex-direction:column;align-items:center;gap:6px;padding:6px 0 12px;margin-bottom:18px;text-align:center;line-height:1.35;letter-spacing:.1em}
+  .p-dateline span{display:block;width:100%;text-align:center}
+  .paper .p-head p{text-align:center}
+  .paper .p-sub{margin-top:16px;padding:0 4px}
+}

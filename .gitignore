@@ -1,0 +1,15 @@
+# Caches et données locales d'outils (ne pas versionner)
+.playwright-cli/
+.refact/
+.workbuddy-ai/
+node_modules/
+*.log
+
+# Sauvegardes de fichiers
+*.bak
+*.bak-*
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini

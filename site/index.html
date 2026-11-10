@@ -26,6 +26,7 @@
    <li><a href="#projets" data-i18n="m_proj"></a></li>
    <li><a href="#partenariats" data-i18n="m_part"></a></li>
    <li><a href="#agenda" data-i18n="m_agenda"></a></li>
+   <li id="navNotes"><a href="#notes" data-i18n="m_notes"></a></li>
   </ul></nav>
   <div class="right">
    <div class="lang"><button data-l="fr">FR</button><button data-l="pt">PT</button><button data-l="en">EN</button></div>
@@ -74,7 +75,8 @@
 <!-- ABOUT -->
 <section id="apropos"><div class="wrap two">
  <div class="photo-stack rv">
-  <figure class="p1"><img src="assets/img/drapeaux.jpg" alt="Backtotheroots 2025"><span class="credit" data-credit="drapeaux"></span><figcaption class="ex" data-i18n="cap_about"></figcaption></figure>
+  <figure class="p1"><img src="assets/img/g/audience-sepromi.jpg" alt="Ângela Guimarães, SEPROMI"><span class="credit" data-credit="audience-sepromi"></span></figure>
+  <div id="aboutNote" class="pn"></div>
   <div class="tag"><i data-lucide="award"></i><span data-i18n="a_badge"></span></div>
  </div>
  <div>
@@ -83,7 +85,6 @@
   <p class="intro rv d2" data-i18n="a_i"></p>
   <div class="ic-list rv d2" data-icons="a_l1" data-ic="scale,landmark,palette,clapperboard,handshake,users,hourglass"></div>
   <div class="note rv d3"><i data-lucide="quote"></i><p data-i18n="a_p3"></p></div>
-  <p class="rv"><span class="todo" data-i18n="todo_dip"></span></p>
  </div>
 </div></section>
 
@@ -97,8 +98,8 @@
 
 <!-- VISION -->
 <section id="vision" class="vision">
- <div class="bg parallax" data-speed=".12" style="background-image:url(assets/img/ocean.jpg)"></div><div class="veil"></div>
- <span class="credit corner" data-credit="ocean"></span>
+ <div class="bg parallax" data-speed=".12" style="background-image:url(assets/img/musee-afro-bresil.jpg);background-position:center 28%"></div><div class="veil"></div>
+ <span class="credit corner" data-credit="musee-afro-bresil"></span>
  <div class="wrap">
   <p class="eyebrow light rv"><span>03</span><em data-i18n="m_vision"></em></p>
   <blockquote class="quote rv d1" data-i18n="v_q"></blockquote>
@@ -120,6 +121,7 @@
   <i class="ship" data-lucide="sailboat"></i>
   <figure class="end"><img src="assets/img/salvador.jpg" alt="Salvador de Bahia"><span class="credit" data-credit="salvador"></span><figcaption class="cap"><b>Brésil</b><small data-i18n="cap_bra"></small></figcaption></figure>
  </div>
+ <aside class="pn pn-bb rv"><span class="chip static"><i data-lucide="landmark"></i><span data-i18n="bb_note_k"></span></span><p data-i18n="bb_note"></p></aside>
  <div class="cards small" data-cards="b_l" data-ic="handshake,landmark,shopping-bag,clapperboard,scroll-text,plane,palette,graduation-cap,book-open,map,coins,users"></div>
  <p class="sub rv" data-i18n="b_c"></p>
  <div class="cities" data-cities="b_cities"></div>
@@ -142,7 +144,7 @@
  <h2 class="rv d1" data-i18n="o_t"></h2>
  <p class="intro rv d2" data-i18n="o_i"></p>
  <div class="obs">
-  <div class="obs-img rv"><figure><img src="assets/img/g/conference-table.jpg" alt=""><span class="credit" data-credit="conference-table"></span><figcaption class="ex" data-i18n="cap_obs1"></figcaption></figure><figure><img src="assets/img/g/oidp-rio-scene.jpg" alt=""><span class="credit" data-credit="oidp-rio-scene"></span><figcaption class="ex" data-i18n="cap_obs2"></figcaption></figure></div>
+  <div class="obs-img rv"><figure><img src="assets/img/g/future-affairs-tatiana.jpg" alt="Future Affairs Forum Rio 2026"><span class="credit" data-credit="future-affairs-tatiana"></span><figcaption class="ex" data-i18n="cap_obs1"></figcaption></figure><figure><img src="assets/img/g/future-affairs-musee.jpg" alt="Museu do Amanhã, Rio de Janeiro"><span class="credit" data-credit="future-affairs-musee"></span><figcaption class="ex" data-i18n="cap_obs2"></figcaption></figure></div>
   <div class="ic-grid" data-icons="o_l" data-ic="line-chart,book-open,file-text,map,clock,file-bar-chart,mic,folder-open,database,store,lightbulb,scale,globe-2"></div>
  </div>
 </div></section>
@@ -153,9 +155,9 @@
  <h2 class="rv d1" data-i18n="p_t"></h2>
  <p class="intro rv d2" data-i18n="p_i"></p>
  <div class="projects">
-  <article class="fiche rv"><div class="ph"><img src="assets/img/drapeaux.jpg" alt=""><span class="chip"><i data-lucide="ship"></i> Atlantique</span><span class="credit" data-credit="drapeaux"></span></div><div class="body"><h3>Corridor culturel de l’Atlantique</h3><dl data-dl="p_f"></dl></div></article>
-  <article class="fiche rv d1"><div class="ph empty"><span class="chip"><i data-lucide="map-pin"></i> Porto Alegre</span><div class="empty-in"><i data-lucide="image-plus"></i><span data-i18n="img_poa"></span></div></div><div class="body"><h3>Prince Custódio / Porto Alegre</h3><dl data-dl="p_f"></dl></div></article>
-  <article class="fiche rv d2"><div class="ph"><img src="assets/img/g/danse-bahia.jpg" alt=""><span class="chip"><i data-lucide="palette"></i> Arts</span><span class="credit" data-credit="danse-bahia"></span></div><div class="body"><h3 data-i18n="p_other"></h3><dl data-dl="p_f"></dl></div></article>
+  <article class="fiche rv"><div class="ph"><img src="assets/img/drapeaux.jpg" alt=""><span class="chip"><i data-lucide="ship"></i> Atlantique</span><span class="credit" data-credit="drapeaux"></span></div><div class="body"><h3>Corridor culturel de l’Atlantique</h3><p class="fd" data-i18n="d_corr"></p></div></article>
+  <article class="fiche portrait rv d1"><div class="ph"><img src="assets/img/g/prince-custodio-portrait.jpg" alt="Portrait encadré du Prince Custódio de Ajudá — Porto Alegre"><span class="chip"><i data-lucide="map-pin"></i> Porto Alegre</span><span class="credit" data-credit="prince-custodio-portrait"></span></div><div class="body"><h3>Prince Custódio / Porto Alegre</h3><p class="fd"><b data-i18n="d_pc_h"></b><span data-i18n="d_pc_p"></span></p></div></article>
+  <article class="fiche rv d2"><div class="ph"><img src="assets/img/g/opera-vodun.jpg" alt="Opéra Vodun"><span class="chip"><i data-lucide="palette"></i> Arts</span><span class="credit" data-credit="opera-vodun"></span></div><div class="body"><h3 data-i18n="p_vod"></h3><p class="fd" data-i18n="d_vod"></p><p class="fq" data-i18n="d_vod_q"></p></div></article>
  </div>
 </div></section>
 
@@ -165,21 +167,24 @@
  <h2 class="rv d1" data-i18n="pa_t"></h2>
  <p class="intro rv d2" data-i18n="pa_i"></p>
  <div class="partners rv">
+  <div class="p-feat-wrap" id="partnerFeat"></div>
   <h3 class="h3" style="margin-top:0" data-i18n="part_t"></h3>
   <p class="intro" style="margin-bottom:26px" data-i18n="part_i"></p>
-  <div class="p-grid" id="partners"></div>
+  <p class="p-group" data-i18n="part_gbr"></p>
+  <div class="p-grid" id="partnersBr"></div>
+  <p class="p-group" data-i18n="part_gbj"></p>
+  <div class="p-grid" id="partnersBj"></div>
   <a class="btn gold" href="#f" id="partnerCta"><i data-lucide="handshake"></i><span data-i18n="part_cta"></span></a>
  </div>
  <div class="cards" data-cards="pa_l" data-ic="building-2,landmark,coins,graduation-cap,network"></div>
  <div class="eco rv">
-  <div><h3 data-i18n="eco_t"></h3><p data-i18n="eco_i"></p>
-   <p><span class="todo" data-i18n="todo_links"></span></p></div>
+  <div><h3 data-i18n="eco_t"></h3><p data-i18n="eco_i"></p></div>
   <div class="ic-list" data-icons="eco_l" data-ic="crown,globe,flag,scale,landmark,coins,building,handshake,link"></div>
  </div>
 </div></section>
 
 <!-- INSTITUTIONS -->
-<section id="institutions"><div class="wrap">
+<section id="institutions" hidden><div class="wrap">
  <p class="eyebrow rv"><span>09</span><em data-i18n="i_t"></em></p>
  <h2 class="rv d1" data-i18n="i_t"></h2>
  <div class="cards small" data-cards="i_l" data-ic="compass,book-open,plane,wrench,link,telescope,landmark,users,calendar-days,ship,users-round,rocket"></div>
@@ -187,7 +192,7 @@
 
 <!-- INVESTISSEURS -->
 <section id="investisseurs" class="dark"><div class="wrap">
- <p class="eyebrow light rv"><span>10</span><em data-i18n="n_t"></em></p>
+ <p class="eyebrow light rv"><span>09</span><em data-i18n="n_t"></em></p>
  <h2 class="rv d1" data-i18n="n_t"></h2>
  <div class="invest">
   <div class="inv-left rv">
@@ -205,10 +210,9 @@
 <section id="agenda" class="agenda">
  <div class="wrap"><div class="two">
   <div>
-   <p class="eyebrow rv"><span>11</span><em data-i18n="m_agenda"></em></p>
+   <p class="eyebrow rv"><span>10</span><em data-i18n="m_agenda"></em></p>
    <h2 class="rv d1" data-i18n="g_t"></h2>
    <div class="ic-list rv d2" data-icons="g_l" data-ic="calendar-clock,plane,mic,users,image,handshake,users-round,ship,calendar-range"></div>
-   <p><span class="todo" data-i18n="todo_agenda"></span></p>
   </div>
   <div class="photo-one rv"><img src="assets/img/g/panel-fauteuils.jpg" alt=""><span class="credit" data-credit="panel-fauteuils"></span><figcaption class="ex" data-i18n="cap_agenda"></figcaption></div>
  </div>
@@ -216,6 +220,14 @@
  <div class="events" id="events"></div>
  </div>
 </section>
+
+<!-- NOTES DE PRESSE / ANALYSES -->
+<section id="notes"><div class="wrap">
+ <p class="eyebrow rv"><span>11</span><em data-i18n="notes_t"></em></p>
+ <h2 class="rv d1" data-i18n="notes_t"></h2>
+ <p class="intro rv d2" data-i18n="notes_i"></p>
+ <div id="notesList" class="notes"></div>
+</div></section>
 
 <!-- PUBLICATIONS / MEDIAS / DISTINCTIONS -->
 <section id="publications" class="tint"><div class="wrap">
@@ -250,8 +262,9 @@
   <p class="intro rv d2" data-i18n="c_i"></p>
   <div class="doors" data-doors="c_l" data-ic="building-2,handshake,lightbulb,search,coins,users-round,ship,languages"></div>
   <div class="coords rv">
+   <a href="tel:+5511940740454"><i data-lucide="phone"></i>+55 11 94074-0454</a>
    <a href="tel:+2290169471310"><i data-lucide="phone"></i>+229 01 69 47 13 10</a>
-   <a href="mailto:contact@tatianaconsulting.com"><i data-lucide="mail"></i>contact@tatianaconsulting.com</a>
+   <a href="mailto:tatianagbossa@gmail.com"><i data-lucide="mail"></i>tatianagbossa@gmail.com</a>
    <span><i data-lucide="badge-check"></i>IFU : 0202459555050</span>
   </div>
   <form id="f" class="rv">
@@ -268,7 +281,7 @@
  <div class="flag"></div>
  <div class="fgrid">
   <div><img src="assets/logo.png" class="flogo" alt="TSC"><p data-i18n="ft_tag"></p></div>
-  <div class="links"><a href="tel:+2290169471310"><i data-lucide="phone"></i> +229 01 69 47 13 10</a><a href="mailto:contact@tatianaconsulting.com"><i data-lucide="mail"></i> contact@tatianaconsulting.com</a><span><i data-lucide="badge-check"></i> IFU : 0202459555050</span><a href="https://www.gouv.bj" target="_blank" rel="noopener"><i data-lucide="external-link"></i> Gouvernement du Bénin</a></div>
+  <div class="links"><a href="tel:+5511940740454"><i data-lucide="phone"></i> +55 11 94074-0454</a><a href="tel:+2290169471310"><i data-lucide="phone"></i> +229 01 69 47 13 10</a><a href="mailto:tatianagbossa@gmail.com"><i data-lucide="mail"></i> tatianagbossa@gmail.com</a><span><i data-lucide="badge-check"></i> IFU : 0202459555050</span><a href="https://www.gouv.bj" target="_blank" rel="noopener"><i data-lucide="external-link"></i> Gouvernement du Bénin</a></div>
  </div>
  <p class="small">© 2026 Tatiana Sagbohan Consulting · <span data-i18n="ph_credit"></span> <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a></p>
 </div></footer>

@@ -1,5 +1,5 @@
 const LANGS = ['fr', 'pt', 'en'];
-const CONTACT_EMAIL = 'contact@tatianaconsulting.com';
+const CONTACT_EMAIL = 'tatianagbossa@gmail.com';
 let lang = 'fr';
 try { lang = localStorage.getItem('lang') || (navigator.language || 'fr').slice(0, 2); } catch (e) {}
 if (!LANGS.includes(lang)) lang = 'fr';
@@ -59,6 +59,7 @@ function render() {
   document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.l === lang));
   renderCredits();
   renderEvents();
+  renderNotes();
   renderPartners();
   renderVideos();
   renderAwards();
@@ -93,24 +94,59 @@ function renderEvents() {
   g.querySelectorAll('.rv').forEach(n => io.observe(n));
 }
 
+// ── notes de presse / articles ──
+// place:'about' → texte sous la photo de « À propos » ; sinon → section « Notes de presse ».
+function noteBody(n, L) {
+  const k = el('span', '', 'chip static'); k.append(icon('landmark'), document.createTextNode(n.k[L] + ' · ' + n.d));
+  const out = [k, el('h3', n.t[L]), ...n.x[L].map(p => el('p', p))];
+  if (n.href) { const a = el('a', '', 'note-link'); a.href = n.href; a.append(document.createTextNode(tr('notes_read')), icon('arrow-right')); out.push(a); }
+  return out;
+}
+function renderNotes() {
+  const L = LANGS.indexOf(lang);
+  const about = NOTES.filter(n => n.place === 'about'), others = NOTES.filter(n => n.place !== 'about');
+  document.getElementById('aboutNote').replaceChildren(...about.flatMap(n => noteBody(n, L)));
+  const g = document.getElementById('notesList');
+  document.getElementById('notes').hidden = !others.length;
+  document.getElementById('navNotes').hidden = !others.length;
+  g.replaceChildren(...others.map(n => {
+    const c = el('article', '', 'note-art rv in');
+    const w = el('figure', '', 'na-img'); const im = document.createElement('img'); im.src = `assets/img/${n.img}.jpg`; im.alt = n.t[L]; im.loading = 'lazy';
+    const cr = el('span', '', 'credit'); fillCredit(cr, n.img.split('/').pop()); w.append(im, cr);
+    const b = el('div', '', 'na-body'); b.append(...noteBody(n, L));
+    c.append(w, b); return c;
+  }));
+}
+
 // ── partenaires ──
+function partnerFeat(p, L) {
+  const a = el('div', '', 'p-feat rv in');
+  const w = el('div', '', 'pimg'); const im = document.createElement('img'); im.src = `assets/img/${p.img}.jpg`; im.alt = p.name;
+  const cr = el('span', '', 'credit'); fillCredit(cr, p.img.split('/').pop()); w.append(im, cr);
+  const t = el('div'); const ch = el('span', '', 'chip static'); ch.append(icon('handshake'), document.createTextNode(tr('part_feat')));
+  t.append(ch, el('h4', p.name), el('p', p.sub[L])); a.append(w, t); return a;
+}
+function partnerTile(p) {
+  const a = p.url ? el('a', '', 'p-tile logo') : el('div', '', 'p-tile logo');
+  if (p.url) { a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; }
+  if (p.logo) { const im = document.createElement('img'); im.src = p.logo; im.alt = p.name; im.style.maxHeight = '70px'; a.append(im); } else a.append(el('b', p.name));
+  return a;
+}
 function renderPartners() {
-  const g = document.getElementById('partners'); const L = LANGS.indexOf(lang);
-  const tiles = PARTNERS.map(p => {
-    if (p.img) {
-      const a = el('div', '', 'p-feat rv in');
-      const w = el('div', '', 'pimg'); const im = document.createElement('img'); im.src = `assets/img/${p.img}.jpg`; im.alt = p.name;
-      const cr = el('span', '', 'credit'); fillCredit(cr, p.img.split('/').pop()); w.append(im, cr);
-      const t = el('div'); const ch = el('span', '', 'chip static'); ch.append(icon('handshake'), document.createTextNode(tr('part_feat')));
-      t.append(ch, el('h4', p.name), el('p', p.sub[L])); a.append(w, t); return a;
-    }
-    const a = p.url ? el('a', '', 'p-tile logo') : el('div', '', 'p-tile logo');
-    if (p.url) { a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; }
-    if (p.logo) { const im = document.createElement('img'); im.src = p.logo; im.alt = p.name; im.style.maxHeight = '70px'; a.append(im); } else a.append(el('b', p.name));
-    return a;
-  });
-  const ph = Array.from({ length: PARTNER_PLACEHOLDERS }, () => { const t = el('div', '', 'p-tile'); t.append(icon('image-plus'), el('span', tr('part_ph'))); return t; });
-  g.replaceChildren(...tiles, ...ph);
+  const L = LANGS.indexOf(lang);
+  const feat = PARTNERS.filter(p => p.img);
+  const br = PARTNERS.filter(p => !p.img && p.group !== 'bj');
+  const bj = PARTNERS.filter(p => !p.img && p.group === 'bj');
+  document.getElementById('partnerFeat').replaceChildren(...feat.map(p => partnerFeat(p, L)));
+  const fill = (host, list, ph) => {
+    const g = document.getElementById(host);
+    g.className = 'p-grid' + (list.length <= 2 ? ' tight' : '');
+    const tiles = list.map(partnerTile);
+    if (ph) tiles.push(...Array.from({ length: ph }, () => { const t = el('div', '', 'p-tile'); t.append(icon('image-plus'), el('span', tr('part_ph'))); return t; }));
+    g.replaceChildren(...tiles);
+  };
+  fill('partnersBr', br, 0);
+  fill('partnersBj', bj, PARTNER_PLACEHOLDERS);
 }
 document.getElementById('partnerCta').onclick = () => { document.getElementById('subj').selectedIndex = 1; };
 
@@ -152,12 +188,12 @@ function renderAwards() {
     g.replaceChildren(c); return;
   }
   g.replaceChildren(...AWARDS.map(a => {
-    const c = el('article', '', 'award-card');
+    const c = el('article', '', 'award-card' + (a.wide ? ' land' : ''));
     const w = el('div', '', 'awi'); const im = document.createElement('img'); im.src = a.img; im.alt = a.t[L];
     w.append(im);
     if (a.credit) { const cr = el('span', '', 'credit'); fillCredit(cr, a.credit); w.append(cr); }
     const b = el('div', '', 'awb');
-    if (a.d) { const d = el('span', '', 'chip static'); d.append(icon('award'), document.createTextNode(a.d)); b.append(d); }
+    if (a.d) { const d = el('span', '', 'chip static'); d.append(icon('award'), document.createTextNode(Array.isArray(a.d) ? a.d[L] : a.d)); b.append(d); }
     b.append(el('h4', a.t[L]), el('p', a.x[L]));
     c.append(w, b); return c;
   }));

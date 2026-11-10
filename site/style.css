@@ -65,7 +65,8 @@ header.solid .lang button{color:var(--ink)}
 /* crédits photo */
 .credit{position:absolute;right:10px;bottom:10px;z-index:3;display:inline-flex;gap:6px;align-items:center;max-width:calc(100% - 20px);padding:4px 10px;border-radius:20px;background:rgba(0,0,0,.66);color:#fff;font:600 11px/1.35 'Manrope';backdrop-filter:blur(4px);pointer-events:none}
 .credit [data-lucide]{width:12px;height:12px}
-.credit.todo-cr{background:#fff3c2;color:#6b5500;border:1px dashed #b58f00}
+/* crédit pas encore renseigné : badge masqué (à compléter quand la cliente fournit le crédit) */
+.credit.todo-cr{display:none}
 .credit.corner{right:18px;bottom:14px}
 
 /* hero */
@@ -212,12 +213,16 @@ h2{font-size:clamp(32px,4.2vw,54px);max-width:880px;margin-bottom:20px}
 .steps span:first-child{border-radius:18px 0 0 18px}.steps span:last-child{border-radius:0 18px 18px 0}
 
 /* projects */
-.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px}
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px;align-items:start}
 .fiche{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.4s}
 .fiche:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
 .fiche .ph{position:relative;height:200px;overflow:hidden}
 .fiche .ph img{width:100%;height:100%;object-fit:cover;transition:1s}
 .fiche:hover .ph img{transform:scale(1.1)}
+/* portrait : affiché en entier, jamais recadré (demande cliente) */
+.fiche.portrait .ph{height:auto}
+.fiche.portrait .ph img{height:auto;object-fit:contain}
+.fiche.portrait:hover .ph img{transform:none}
 .chip{position:absolute;left:14px;top:14px;z-index:3;background:var(--acc);color:var(--on-acc);padding:5px 14px;border-radius:30px;font-weight:700;font-size:12.5px;display:inline-flex;gap:6px;align-items:center}
 .chip.static{position:static}
 .fiche .body{padding:24px}
@@ -228,7 +233,14 @@ h2{font-size:clamp(32px,4.2vw,54px);max-width:880px;margin-bottom:20px}
 
 /* partners / agenda / publications */
 .partners{margin:0 0 70px}
-.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-bottom:26px}
+.p-feat-wrap{margin-bottom:34px}
+.p-feat-wrap .p-feat{grid-template-columns:170px 1fr;max-width:760px}
+.p-group{display:flex;align-items:center;gap:14px;margin:0 0 14px;font:700 11.5px 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.p-group::after{content:"";flex:1;height:1px;background:var(--line)}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:26px}
+.p-grid.tight{grid-template-columns:repeat(auto-fill,220px)}
+@media(max-width:900px) and (min-width:696px){.p-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:695px){.p-grid{grid-template-columns:1fr 1fr}.p-grid.tight{grid-template-columns:1fr 1fr}}
 .p-feat{grid-column:span 2;display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;padding:14px;background:#fff;border:1px solid var(--line);border-radius:var(--r);transition:.3s}
 .p-feat:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .p-feat .pimg{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:1}
@@ -239,6 +251,7 @@ h2{font-size:clamp(32px,4.2vw,54px);max-width:880px;margin-bottom:20px}
 .p-tile{display:grid;place-items:center;gap:6px;min-height:150px;padding:14px;text-align:center;border:1.5px dashed #bdbdbd;border-radius:var(--r);background:rgba(255,255,255,.6);color:var(--muted);font-weight:600;font-size:13.5px}
 .p-tile [data-lucide]{width:28px;height:28px;color:var(--green)}
 .p-tile.logo{border-style:solid;background:#fff}
+.p-tile.logo img{max-width:100%;height:auto;object-fit:contain}
 .eco{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;margin-top:70px;padding:44px;background:#fff;border-radius:30px;border:1px solid var(--line)}
 .eco h3{font-size:30px;margin-bottom:12px}.eco p{color:var(--muted);margin-bottom:12px}
 .eco .ic-list{margin:0}
@@ -309,7 +322,8 @@ footer .small a{color:var(--gold)}
  .row{grid-template-columns:1fr}.fiche dl{grid-template-columns:1fr}
  .steps span:first-child,.steps span:last-child{border-radius:0}
  .press{grid-template-columns:1fr}.press .pw{max-width:300px}
- .p-feat{grid-column:auto;grid-template-columns:110px 1fr}
+ .p-feat{grid-column:1/-1;grid-template-columns:110px 1fr}
+ .p-feat-wrap .p-feat{grid-template-columns:110px 1fr;max-width:none}
  header .logo img{height:36px}header .bar{padding:12px 16px}.lang button{padding:4px 8px}
 }
 @media(max-width:420px){header .logo img{height:30px}header .right{gap:6px}}
@@ -371,4 +385,76 @@ footer .small a{color:var(--gold)}
 .award-card h4{font:700 22px/1.2 'Fraunces',serif;margin:8px 0}
 .award-card p{color:var(--muted);font-size:14.5px}
 @media(max-width:700px){.award-card{grid-template-columns:1fr}.award-card .awi{max-width:260px}.inv-left{position:static}}
+/* distinction mise en avant (document officiel au format paysage) */
+.awards .award-card.land{grid-column:1/-1;grid-template-columns:minmax(0,420px) 1fr;align-items:start;gap:26px}
+.award-card.land .awi{aspect-ratio:1170/824;max-width:none}
+.award-card.land h4{margin-top:0}
+/* le document est un scan : le crédit va en haut pour ne pas masquer signatures et cachet */
+.award-card.land .credit{top:10px;bottom:auto}
+@media(max-width:700px){.awards .award-card.land{grid-template-columns:1fr}.award-card.land .awi{max-width:100%}}
+
 .end .credit{top:12px;bottom:auto;right:12px}
+
+/* fiches projets : courte description à la place des rubriques */
+.fiche .ph{height:230px}
+.fiche .ph img{object-position:50% 40%}
+.fiche .fd{font-size:14.5px;color:var(--muted);line-height:1.65}
+.fiche .fd b{display:block;margin-bottom:8px;color:var(--ink);font-size:15px;line-height:1.45}
+.fiche .fq{margin-top:14px;padding-left:14px;border-left:3px solid var(--ink);font:italic 500 16px/1.5 'Fraunces',serif}
+
+/* observatoire : deux images côte à côte, format libre */
+.obs{grid-template-columns:1.1fr .9fr}
+.obs-img{grid-template-columns:1fr 1fr;align-items:start}
+.obs-img figure{aspect-ratio:1/1}
+.obs-img figure:nth-child(2){width:100%;margin:0;border:0;aspect-ratio:3/4}
+.obs-img .ex{max-width:calc(100% - 20px);font-size:11.5px;top:auto;bottom:40px}
+@media(max-width:980px){.obs{grid-template-columns:1fr}}
+.fiche .ph img[src*="opera-vodun"]{object-position:0 50%}
+
+/* Notes de presse : image entière (jamais recadrée, aucun texte par-dessus) + texte à côté */
+.notes{display:grid;gap:34px}
+.note-art{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:40px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.na-img{position:relative;margin:0;border-radius:14px;overflow:hidden;background:#111}
+.na-img img{display:block;width:100%;height:auto}
+.na-body{display:grid;gap:14px;align-content:start}
+.na-body h3{font:700 clamp(24px,2.6vw,34px)/1.2 'Fraunces',serif}
+.na-body p{color:var(--muted);font-size:16.5px;line-height:1.7}
+@media(max-width:820px){.note-art{grid-template-columns:1fr;gap:22px;padding:16px}}
+
+/* éléments « à compléter » masqués pour la mise en ligne */
+.todo,.v-card.ph,.p-tile:not(.logo),.award-ph{display:none!important}
+
+/* Légendes sous les photos : la photo s'affiche en entier, plus aucun texte par-dessus */
+.photo-stack .p1,.obs-img figure,.obs-img figure:nth-child(2),.inv-photo,.agenda .photo-one{
+  display:flex;flex-direction:column;aspect-ratio:auto;overflow:visible;
+  border:0;box-shadow:none;border-radius:0;width:100%;margin:0;background:none}
+.photo-stack .p1 img,.obs-img figure img,.inv-photo img,.agenda .photo-one img{
+  display:block;width:100%;height:auto;object-fit:contain;border-radius:var(--r);box-shadow:var(--shadow)}
+.agenda .photo-one img{border-radius:var(--r)}
+.photo-stack .ex,.obs-img .ex,.inv-photo .ex,.photo-one .ex{
+  position:static;max-width:none;order:2;padding:12px 2px 0;background:none;border-radius:0;
+  backdrop-filter:none;color:inherit;opacity:.85;font:600 13.5px/1.5 'Manrope'}
+/* le crédit reste sur l'image, en haut à droite */
+.photo-stack .p1 .credit,.obs-img figure .credit,.inv-photo .credit,.photo-one .credit{top:10px;bottom:auto;right:10px}
+.photo-stack figure{overflow:visible}
+
+/* note de presse sous la photo « À propos » */
+.pn{display:grid;gap:12px;margin-top:22px}
+.pn h3{font:700 clamp(21px,2.2vw,27px)/1.25 'Fraunces',serif}
+.pn p{color:var(--muted);font-size:15.5px;line-height:1.7}
+.pn:empty{display:none}
+[hidden]{display:none!important}
+
+/* Bénin × Brésil : images entières, légende dessous */
+.atlantic .end{aspect-ratio:auto;overflow:visible;box-shadow:none;border-radius:0;display:flex;flex-direction:column}
+.atlantic .end img{height:auto;object-fit:contain;border-radius:26px;box-shadow:var(--shadow)}
+.atlantic .end:hover img{transform:none}
+.atlantic .end figcaption.cap{position:static;order:2;background:none;color:var(--ink);padding:10px 4px 0;border-radius:0}
+.atlantic .end figcaption.cap small{opacity:.8}
+.pn-bb{max-width:820px;margin:-24px auto 40px;text-align:left}
+.pn-bb p{font:500 clamp(18px,2vw,22px)/1.6 'Fraunces',serif;color:var(--ink)}
+.pn .btn{justify-self:start;margin-top:6px}
+.note-link{justify-self:start;display:inline-flex;align-items:center;gap:10px;margin-top:8px;padding:12px 22px;border-radius:40px;background:var(--ink);color:#fff;font-weight:700;font-size:14.5px;text-decoration:none;transition:.3s}
+.note-link:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.note-link [data-lucide]{width:18px;height:18px}
+.na-body .note-link{margin-top:10px}
